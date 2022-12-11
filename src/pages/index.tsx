@@ -38,6 +38,9 @@ const Home: NextPage = () => {
                 to deploy it.
               </div>
             </Link>
+            <Link href="RadarMode">
+              <h3>RadarMode</h3>
+            </Link>
           </div>
         </div>
       </main>
