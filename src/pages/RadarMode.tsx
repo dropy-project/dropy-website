@@ -6,11 +6,11 @@ export default function RadarMode() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="flex flex-col w-4/5 h-3/5 items-center justify-center bg-white rounded-2xl">
-          <div className="flex flex-col w-4/5">
+          <div className="flex flex-col w-4/5 mt-6 mb-6">
             <div>
-            <p className="text-xl font-bold text-center font-space">Le Mode Radar</p>
+            <p className="text-xl font-bold text-center font-space text-darkGrey">Le Mode Radar</p>
             <div>
-              <p className="text-center text-xs font-space leading-3">Ne rate aucun drop même avec l’application fermée</p>
+              <p className="text-center text-xs font-space text-grey leading-3">Ne rate aucun drop même avec l’application fermée</p>
             </div>
             <div className="flex items-center justify-center">
 							<Image src="/assets/radar.png" width={100} height={100} alt="Radar" />
