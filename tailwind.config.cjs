@@ -10,6 +10,9 @@ module.exports = {
         'grey': '#7D86A9',
         'darkGrey': '#59607A',
       },
+      backgroundImage: {
+        'map': "url('/map.png')",
+      }
     },
   },
   plugins: [],

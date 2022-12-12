@@ -1,10 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import map from '../../public/img/map.svg';
 
 export default function RadarMode() {
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+    <>
+    <div className="z-0 fixed w-screen h-screen">
+      <Image src={map} alt="background" layout="fill" objectFit='cover' />
+    </div>
+    <div className="flex min-h-screen flex-col items-center justify-center fixed">
         <div className="flex flex-col w-4/5 h-3/5 items-center justify-center bg-white rounded-2xl">
           <div className="flex flex-col w-4/5 mt-6 mb-6">
             <div>
@@ -13,7 +18,7 @@ export default function RadarMode() {
               <p className="text-center text-xs font-space text-grey leading-3">Ne rate aucun drop même avec l’application fermée</p>
             </div>
             <div className="flex items-center justify-center">
-							<Image src="/assets/radar.png" width={100} height={100} alt="Radar" />
+							<Image src="/radar.png" width={100} height={100} alt="Radar" />
 						</div>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
@@ -33,5 +38,7 @@ export default function RadarMode() {
         </div>
           </div>
     </div>
+    </>
+    
   )
 }
