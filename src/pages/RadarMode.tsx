@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import map from '../../public/img/map.svg';
+import radar from '../../public/img/radar.png';
 
 export default function RadarMode() {
 
@@ -9,16 +10,16 @@ export default function RadarMode() {
     <div className="z-0 fixed w-screen h-screen">
       <Image src={map} alt="background" layout="fill" objectFit='cover' />
     </div>
-    <div className="flex min-h-screen flex-col items-center justify-center fixed">
-        <div className="flex flex-col w-4/5 h-3/5 items-center justify-center bg-white rounded-2xl">
+    <div className="flex min-h-screen flex-col items-center justify-center relative">
+        <div className="flex flex-col w-80 h-3/5 items-center justify-center bg-white rounded-2xl shadow-2xl">
           <div className="flex flex-col w-4/5 mt-6 mb-6">
             <div>
             <p className="text-xl font-bold text-center font-space text-darkGrey">Le Mode Radar</p>
             <div>
               <p className="text-center text-xs font-space text-grey leading-3">Ne rate aucun drop même avec l’application fermée</p>
             </div>
-            <div className="flex items-center justify-center">
-							<Image src="/radar.png" width={100} height={100} alt="Radar" />
+            <div className="flex items-center justify-center mt-6">
+							<Image src={radar} width={52} height={52} alt="Radar" />
 						</div>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
