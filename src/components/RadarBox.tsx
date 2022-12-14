@@ -7,18 +7,18 @@ import styles from '../styles/RadarBox.module.scss';
 const RadarMode: NextPage = () => {
   return (
     <div className={styles.radar_box}>
-        <div className="flex flex-col w-80 h-3/5 items-center justify-center bg-white rounded-2xl shadow-2xl">
-          <div className="flex flex-col w-4/5 mt-6 mb-6">
+        <div className={styles.box}>
+          <div className={styles.inner_box}>
             <div>
-            <p className="text-xl font-bold text-center font-space text-darkGrey">Le Mode Radar</p>
+              <p className={styles.radar_title}>Le Mode Radar</p>
             <div>
-              <p className="text-center text-xs font-space text-grey leading-3">Ne rate aucun drop même avec l’application fermée</p>
+              <p className={styles.description}>Ne rate aucun drop même avec l’application fermée</p>
             </div>
-            <div className="flex items-center justify-center mt-6">
+            <div className={styles.icon_container}>
 							<Image src={radar} width={52} height={52} alt="Radar" />
 						</div>
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-full">
+          <div className={styles.tutorial_container}>
             <div className="flex flex-col items-center justify-center w-full h-1/2 text-justify">
               <p className="text-sm mb-2 mt-5 font-medium font-space text-center text-darkGrey">Comment ça marche ?</p>
               <p className="text-xs leading-3 font-space text-grey">Nous utilisons une fonctionnalité de ton téléphone qui permet de suivre ta position en arrière plan, cela nous permet de t’envoyer une notification lorsque nous detectons que tu passe à côté d’un drop !</p>
