@@ -57,6 +57,32 @@
             justify-content: center;
             width: 100%;
             height: 100%;
+            .tutorial_inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 50%;
+                text-align: justify;
+                margin-top: 1.5rem;
+                .tutorial_title {
+                    font-family: $spaceGrotesk;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: $darkGrey;
+                    text-align: center;
+                    margin-bottom: 0.8rem;
+                }
+                .tutorial_text {
+                    font-family: $spaceGrotesk;
+                    font-size: 0.85rem;
+                    font-weight: 400;
+                    color: $grey;
+                    text-align: justify;
+                    line-height: 1;
+                }
+            }
         }
     }
 }
