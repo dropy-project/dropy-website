@@ -1,11 +1,12 @@
 import React from 'react';
+import { type NextPage } from "next";
 import Image from 'next/image';
 import radar from '../../public/img/radar.png';
+import styles from '../styles/RadarBox.module.scss';
 
-export default function RadarMode() {
-
+const RadarMode: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center relative">
+    <div className={styles.radar_box}>
         <div className="flex flex-col w-80 h-3/5 items-center justify-center bg-white rounded-2xl shadow-2xl">
           <div className="flex flex-col w-4/5 mt-6 mb-6">
             <div>
@@ -36,3 +37,5 @@ export default function RadarMode() {
     </div>
   )
 }
+
+export default RadarMode;
