@@ -40,6 +40,9 @@ const Home: NextPage = () => (
           <Link href='RadarMode'>
             <h3>RadarMode</h3>
           </Link>
+          <Link href='ResetPassword'>
+            <h3>ResetPassword</h3>
+          </Link>
         </div>
       </div>
     </main>
