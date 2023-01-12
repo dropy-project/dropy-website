@@ -1,9 +1,20 @@
-import React from 'react';
-import { type NextPage } from 'next';
-import styles from '../assets/styles/ResetPasswordBox.module.scss';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 
-const ResetPasswordBox: NextPage = () => (
-  <div className={styles.reset_password}>
+import styles from 'styles/ResetPasswordBox.module.scss';
+
+const ResetPasswordBox: NextPage<{ token: string }> = ({ token }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!token) {
+      router.push('/');
+    }
+  }, [token, router]);
+
+  return (
+    <div className={styles.reset_password}>
     <div className={styles.box}>
     <div className={styles.inner_box}>
         <div>
@@ -23,6 +34,14 @@ const ResetPasswordBox: NextPage = () => (
       </div>
     </div>
   </div>
-);
+  )
+};
+
+ResetPasswordBox.getInitialProps = async (context) => {
+  const { query } = context;
+  const token = query.token as string;
+
+  return { token };
+};
 
 export default ResetPasswordBox;
