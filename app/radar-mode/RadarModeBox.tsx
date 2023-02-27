@@ -1,11 +1,12 @@
 import React from 'react';
-import { type NextPage } from 'next';
 import Image from 'next/image';
-import radar from 'assets/svgs/radar.png';
-import styles from 'assets/styles/RadarBox.module.scss';
+import radar from '../../assets/svgs/radar.png';
 
-const RadarMode: NextPage = () => (
-  <div className={styles.radar_box}>
+import styles from '../../styles/RadarMode.module.scss';
+
+export const RadarModeBox = () => {
+  return (
+    <div className={styles.radar_box}>
     <div className={styles.box}>
       <div className={styles.inner_box}>
         <div>
@@ -42,6 +43,5 @@ const RadarMode: NextPage = () => (
       </div>
     </div>
   </div>
-);
-
-export default RadarMode;
+  );
+};
