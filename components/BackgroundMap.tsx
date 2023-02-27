@@ -1,13 +1,13 @@
 import React from 'react';
-import { type NextPage } from 'next';
 import Image from 'next/image';
-import map from 'assets/svgs/map.svg';
+
 import styles from '../styles/BackgroundMap.module.scss';
 
-const BackgroundMap: NextPage = () => (
+import map from '../static/svg/map.svg';
+
+export const BackgroundMap: React.FC = () => (
   <div className={styles.container}>
     <Image src={map} alt='background' />
   </div>
 );
 
-export default BackgroundMap;
