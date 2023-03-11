@@ -1,8 +1,7 @@
 import React from 'react';
-import { type NextPage } from 'next';
-import styles from '../assets/styles/Footer.module.scss';
+import styles from '../styles/Footer.module.scss';
 
-const Footer: NextPage = () => (
+export const Footer: React.FC = () => (
   <div className={styles.footer}>
     <p>Dropy | ©2023 |</p>
     <a href='mailto:contact@dropy-app.com'>contact@dropy-app.com |</a>
@@ -11,4 +10,3 @@ const Footer: NextPage = () => (
   </div>
 );
 
-export default Footer;

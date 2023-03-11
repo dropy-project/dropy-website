@@ -1,0 +1,134 @@
+@import './font.scss';
+@import './colors.scss';
+@import './responsive.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  .box {
+    box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 60%;
+    background-color: white;
+    border-radius: 2em;
+    @include mobile {
+      width: 80%;
+      height: 65vh;
+    }
+    .inner_box {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      @include mobile {
+        height: 70vh;
+      }
+      @include mobile_xs {
+        height: 60vh;
+      }
+      .header {
+        .title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: $darkGrey;
+          text-align: center;
+          @include mobile {
+            font-size: 1.2rem;
+          }
+          @include mobile_xs {
+            font-size: 1rem;
+          }
+        }
+        .radar__description {
+          .description {
+            font-size: 0.85rem;
+            font-weight: 400;
+            line-height: 1.25;
+            color: $grey;
+            text-align: center;
+            @include mobile {
+              font-size: 0.75rem;
+            }
+            @include mobile_xs {
+              font-size: 0.65rem;
+            }
+          }
+        }
+      }
+      .icon__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5rem;
+        @include mobile {
+          margin-top: 1rem;
+        }
+        @include mobile_xs {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .tutorial__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      .tutorial__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        margin-top: 1rem;
+        text-align: justify;
+        @include mobile {
+          height: 60%;
+          margin-top: 0.8rem;
+        }
+        @include mobile_xs {
+          height: 30%;
+          margin-top: 0.5rem;
+        }
+        .tutorial__title {
+          margin-bottom: 0.8rem;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1;
+          color: $darkGrey;
+          text-align: center;
+          @include mobile {
+            font-size: 0.85rem;
+          }
+          @include mobile_xs {
+            font-size: 0.75rem;
+          }
+        }
+        .tutorial__text {
+          font-size: 0.85rem;
+          font-weight: 400;
+          line-height: 1;
+          color: $grey;
+          text-align: justify;
+          @include mobile {
+            font-size: 0.75rem;
+          }
+          @include mobile_xs {
+            font-size: 0.65rem;
+          }
+        }
+      }
+    }
+  }
+}
