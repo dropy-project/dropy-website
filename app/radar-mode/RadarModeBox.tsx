@@ -4,9 +4,8 @@ import radar from '../../static/img/radar.png';
 
 import styles from '../../styles/RadarMode.module.scss';
 
-export const RadarModeBox = () => {
-  return (
-    <div id='radar-mode-box' className={styles.container}>
+export const RadarModeBox = () => (
+  <div id='radar-mode-box' className={styles.container}>
     <div className={styles.box}>
       <div className={styles.inner_box}>
         <div className={styles.header}>
@@ -43,5 +42,4 @@ export const RadarModeBox = () => {
       </div>
     </div>
   </div>
-  );
-};
+);

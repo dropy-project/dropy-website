@@ -1,9 +1,10 @@
+import React from 'react';
 import '../styles/globals.css';
 
 export const metadata = {
   title: 'Dropy Website',
   description: 'Dropy',
-}
+};
 
 export default function RootLayout({
   children,
@@ -11,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang='fr'>
       <body>
         {children}
       </body>
     </html>
-  )
+  );
 }
