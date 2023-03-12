@@ -15,6 +15,7 @@ const ResetPasswordBox = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [correspondentPassword, setCorrespondentPassword] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -33,9 +34,11 @@ const ResetPasswordBox = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    //e.preventDefault();
     if (password !== passwordConfirmation)
-      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
+      setErrorMessage(true);
+    else
+      setErrorMessage(false);
 
     // TODO: Send data to the server
   };
@@ -91,8 +94,11 @@ const ResetPasswordBox = () => {
                 </div>
               </div>
             </div>
+            {errorMessage && <p>Le mot de passe et la confirmation du mot de passe ne correspondent pas.</p>}
           </div>
-          <Button action={() => handleSubmit} text='Confirmer' />
+          <div onClick={() => handleSubmit()} style={{ width: '100%' }}>
+            <Button text='Confirmer' />
+          </div>
         </div>
       </div>
     </div>
