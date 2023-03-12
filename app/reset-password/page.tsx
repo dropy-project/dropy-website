@@ -23,11 +23,32 @@ const ResetPasswordBox = () => {
           </div>
           <div className={styles.fields}>
             <div className={styles.field}>
-              <input type={showPassword ? 'text' : 'password'}name='password' id='password' placeholder='Nouveau mot de passe' />
-              {showPassword ? <BsEyeSlashFill onClick={toggleShowPassword} /> : <BsEyeFill onClick={toggleShowPassword} />}
+              <div className={styles.password_input}>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name='password'
+                  id='password'
+                  placeholder='Nouveau mot de passe'
+                  className={styles.password_field}
+                />
+                <div className={styles.password_icon} onClick={toggleShowPassword}>
+                  {showPassword ? <BsEyeSlashFill /> : <BsEyeFill />}
+                </div>
+              </div>
             </div>
             <div className={styles.field}>
-              <input type='password' name='password' id='password' placeholder='Confirmation du mot de passe' />
+              <div className={styles.password_input}>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name='password'
+                  id='password'
+                  placeholder='Confirmation mot de passe'
+                  className={styles.password_field}
+                />
+                <div className={styles.password_icon} onClick={toggleShowPassword}>
+                  {showPassword ? <BsEyeSlashFill /> : <BsEyeFill />}
+                </div>
+              </div>
             </div>
           </div>
         </div>
