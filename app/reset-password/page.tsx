@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import styles from '../../styles/ResetPasswordBox.module.scss';
 
@@ -8,12 +8,40 @@ const ResetPasswordBox = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
 
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   const toggleShowPasswordConfirmation = () => {
     setShowPasswordConfirmation(!showPasswordConfirmation);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+    if (passwordConfirmation !== '' && e.target.value !== passwordConfirmation)
+      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
+    else
+      setError('');
+  };
+
+  const handlePasswordConfirmationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordConfirmation(e.target.value);
+    if (password !== '' && e.target.value !== password)
+      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
+    else
+      setError('');
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password !== passwordConfirmation)
+      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
+
+    // TODO: Send data to the server
   };
 
   return (
