@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
 import styles from '../../styles/ResetPasswordBox.module.scss';
@@ -14,6 +14,7 @@ const ResetPasswordBox = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [correspondentPassword, setCorrespondentPassword] = useState<boolean>(false);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -25,18 +26,10 @@ const ResetPasswordBox = () => {
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    if (passwordConfirmation !== '' && e.target.value !== passwordConfirmation)
-      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
-    else
-      setError('');
   };
 
   const handlePasswordConfirmationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordConfirmation(e.target.value);
-    if (password !== '' && e.target.value !== password)
-      setError('Le mot de passe et la confirmation du mot de passe ne correspondent pas.');
-    else
-      setError('');
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,6 +39,14 @@ const ResetPasswordBox = () => {
 
     // TODO: Send data to the server
   };
+
+  useEffect(() => {
+    if (password !== passwordConfirmation)
+      setCorrespondentPassword(false);
+    else
+      setCorrespondentPassword(true);
+  }, [password, passwordConfirmation]);
+
 
   return (
     <div className={styles.container}>
@@ -66,6 +67,8 @@ const ResetPasswordBox = () => {
                   id='password'
                   placeholder='Nouveau mot de passe'
                   className={styles.password_field}
+                  value={password}
+                  onChange={handlePasswordChange}
                 />
                 <div className={styles.password_icon} onClick={toggleShowPassword}>
                   {showPassword ? <BsEyeSlashFill /> : <BsEyeFill />}
@@ -73,13 +76,15 @@ const ResetPasswordBox = () => {
               </div>
             </div>
             <div className={styles.field}>
-              <div className={styles.password_input}>
+              <div className={correspondentPassword ? styles.password_input : styles.password_input_error}>
                 <input
                   type={showPasswordConfirmation ? 'text' : 'password'}
                   name='password'
                   id='password'
                   placeholder='Confirmation mot de passe'
                   className={styles.password_field}
+                  value={passwordConfirmation}
+                  onChange={handlePasswordConfirmationChange}
                 />
                 <div className={styles.password_icon} onClick={toggleShowPasswordConfirmation}>
                   {showPasswordConfirmation ? <BsEyeSlashFill /> : <BsEyeFill />}
