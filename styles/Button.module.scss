@@ -1,3 +1,14 @@
 .button {
-  background-color: red;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background-color: #7f68d1;
+  cursor: pointer;
+  border: none;
+  border-radius: 1em;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  &:active {
+    background-color: #614da9;
+  }
 }

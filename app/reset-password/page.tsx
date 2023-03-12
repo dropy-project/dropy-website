@@ -2,7 +2,10 @@
 
 import React, { useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+
 import styles from '../../styles/ResetPasswordBox.module.scss';
+
+import { Button } from '../../components/Button';
 
 const ResetPasswordBox = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -84,6 +87,7 @@ const ResetPasswordBox = () => {
               </div>
             </div>
           </div>
+          <Button action={() => handleSubmit} text='Confirmer' />
         </div>
       </div>
     </div>
