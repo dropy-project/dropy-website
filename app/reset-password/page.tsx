@@ -13,7 +13,6 @@ const ResetPasswordBox = () => {
 
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
-  const [error, setError] = useState<string>('');
   const [correspondentPassword, setCorrespondentPassword] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
@@ -58,6 +57,8 @@ const ResetPasswordBox = () => {
           <div className={styles.header}>
             <p className={styles.title}>Modification du mot-de-passe</p>
             <div className={styles.profile_container}>
+              <div className={styles.profile_picture}>
+              </div>
               <p>@Pseudo</p>
             </div>
           </div>
