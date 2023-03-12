@@ -5,10 +5,15 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import styles from '../../styles/ResetPasswordBox.module.scss';
 
 const ResetPasswordBox = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleShowPasswordConfirmation = () => {
+    setShowPasswordConfirmation(!showPasswordConfirmation);
   };
 
   return (
@@ -39,14 +44,14 @@ const ResetPasswordBox = () => {
             <div className={styles.field}>
               <div className={styles.password_input}>
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPasswordConfirmation ? 'text' : 'password'}
                   name='password'
                   id='password'
                   placeholder='Confirmation mot de passe'
                   className={styles.password_field}
                 />
-                <div className={styles.password_icon} onClick={toggleShowPassword}>
-                  {showPassword ? <BsEyeSlashFill /> : <BsEyeFill />}
+                <div className={styles.password_icon} onClick={toggleShowPasswordConfirmation}>
+                  {showPasswordConfirmation ? <BsEyeSlashFill /> : <BsEyeFill />}
                 </div>
               </div>
             </div>
