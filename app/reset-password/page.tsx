@@ -4,7 +4,7 @@ const ResetPasswordBox = () => (
   <div className={styles.container}>
     <div className={styles.box}>
       <div className={styles.inner_box}>
-        <div>
+        <div className={styles.header}>
           <p className={styles.title}>Modification du mot-de-passe</p>
           <div className={styles.profile_container}>
             <p>@Pseudo</p>
