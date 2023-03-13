@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -13,8 +14,9 @@ const ResetPasswordBox = () => {
 
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
-  const [correspondentPassword, setCorrespondentPassword] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
+
+  const correspondentPassword: boolean = password !== passwordConfirmation;
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -41,14 +43,6 @@ const ResetPasswordBox = () => {
 
     // TODO: Send data to the server
   };
-
-  useEffect(() => {
-    if (password !== passwordConfirmation)
-      setCorrespondentPassword(false);
-    else
-      setCorrespondentPassword(true);
-  }, [password, passwordConfirmation]);
-
 
   return (
     <div className={styles.container}>
