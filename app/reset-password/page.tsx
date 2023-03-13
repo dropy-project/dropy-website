@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
-
 import styles from '../../styles/ResetPasswordBox.module.scss';
 
 import { Button } from '../../components/Button';
@@ -17,6 +16,10 @@ const ResetPasswordBox = () => {
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const correspondentPassword: boolean = password !== passwordConfirmation;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+  const nextjsUrl = `https://dropy-app.com/reset-password?token=${token}`;
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -35,12 +38,12 @@ const ResetPasswordBox = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //e.preventDefault();
+    e.preventDefault();
     if (password !== passwordConfirmation)
       setErrorMessage(true);
     else
       setErrorMessage(false);
-
+    window.location.href = nextjsUrl;
     // TODO: Send data to the server
   };
 
