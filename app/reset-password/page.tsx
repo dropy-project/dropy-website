@@ -7,6 +7,25 @@ import styles from '../../styles/ResetPasswordBox.module.scss';
 
 import { Button } from '../../components/Button';
 
+const url = `https://preprod-api.dropy-app.com/api-docs/#/API%20-%20Auth/post_requestResetPassword`;
+
+const data = {
+  email: 'string',
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: '<token>',
+  },
+  body: JSON.stringify(data),
+});
+
+const json = await response.json();
+
+console.log(json);
+
 const ResetPasswordBox = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
@@ -44,7 +63,6 @@ const ResetPasswordBox = () => {
     else
       setErrorMessage(false);
     window.location.href = nextjsUrl;
-    // TODO: Send data to the server
   };
 
   return (
@@ -94,7 +112,7 @@ const ResetPasswordBox = () => {
             </div>
             {errorMessage && <p>Le mot de passe et la confirmation du mot de passe ne correspondent pas.</p>}
           </div>
-          <div onClick={() => handleSubmit()} style={{ width: '100%' }}>
+          <div onClick={() => handleSubmit} style={{ width: '100%' }}>
             <Button text='Confirmer' />
           </div>
         </div>
