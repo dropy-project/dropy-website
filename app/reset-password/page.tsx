@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import styles from '../../styles/ResetPasswordBox.module.scss';
 
@@ -15,29 +15,33 @@ const ResetPasswordBox = async () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`https://preprod-api.dropy-app.com/api/auth/resetPassword?token=${token}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: '<token>',
+          },
+        });
+        const userData = await response.json();
+        setUser(userData);
+        console.log(userData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   const correspondentPassword: boolean = password !== passwordConfirmation;
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get('token');
-  const nextjsUrl = `https://dropy-app.com/reset-password?token=${token}`;
-
-  const data = {
-    email: 'string',
-  };
-
-  const response = await fetch(nextjsUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: '<token>',
-    },
-    body: JSON.stringify(data),
-  });
-
-  const json = await response.json();
-
-  console.log(json);
-
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -55,13 +59,33 @@ const ResetPasswordBox = async () => {
     setPasswordConfirmation(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const getTokenFromUrl = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    return token || '';
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password !== passwordConfirmation)
+    try {
+      const response = await fetch('https://preprod-api.dropy-app.com/reset-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          resetPasswordToken: getTokenFromUrl(),
+          password,
+        }),
+      });
+      if (response.ok) {
+        // Handle successful password reset here
+      } else
+        setErrorMessage(true);
+    } catch (error) {
+      console.error(error);
       setErrorMessage(true);
-    else
-      setErrorMessage(false);
-    window.location.href = nextjsUrl;
+    }
   };
 
   return (
@@ -111,7 +135,7 @@ const ResetPasswordBox = async () => {
             </div>
             {errorMessage && <p>Le mot de passe et la confirmation du mot de passe ne correspondent pas.</p>}
           </div>
-          <div onClick={() => handleSubmit} style={{ width: '100%' }}>
+          <div style={{ width: '100%' }}>
             <Button text='Confirmer' />
           </div>
         </div>
