@@ -7,26 +7,7 @@ import styles from '../../styles/ResetPasswordBox.module.scss';
 
 import { Button } from '../../components/Button';
 
-const url = `https://preprod-api.dropy-app.com/api-docs/#/API%20-%20Auth/post_requestResetPassword`;
-
-const data = {
-  email: 'string',
-};
-
-const response = await fetch(url, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: '<token>',
-  },
-  body: JSON.stringify(data),
-});
-
-const json = await response.json();
-
-console.log(json);
-
-const ResetPasswordBox = () => {
+const ResetPasswordBox = async () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState<boolean>(false);
 
@@ -39,6 +20,24 @@ const ResetPasswordBox = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('token');
   const nextjsUrl = `https://dropy-app.com/reset-password?token=${token}`;
+
+  const data = {
+    email: 'string',
+  };
+
+  const response = await fetch(nextjsUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: '<token>',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const json = await response.json();
+
+  console.log(json);
+
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
