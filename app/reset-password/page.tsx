@@ -23,7 +23,7 @@ const ResetPasswordBox = async () => {
 
     const fetchUser = async () => {
       try {
-        const response = await fetch(`https://preprod-api.dropy-app.com/api/auth/resetPassword?token=${token}`, {
+        const response = await fetch(`/api/auth/resetPassword?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
