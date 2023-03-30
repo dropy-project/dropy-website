@@ -1,15 +1,13 @@
-import { RadarModeBox } from "./RadarModeBox";
-import { BackgroundMap } from "../../components/BackgroundMap";
-import { Footer } from "../../components/Footer";
+import { BackgroundMap } from '../../components/BackgroundMap';
+import { Footer } from '../../components/Footer';
+import { RadarModeBox } from './RadarModeBox';
 
-const RadarMode = () => {
-  return (
-    <>
-      <BackgroundMap />
-      <RadarModeBox />
-      <Footer />
-    </>
-  );
-};
+const RadarMode = () => (
+  <>
+    <BackgroundMap />
+    <RadarModeBox />
+    <Footer />
+  </>
+);
 
 export default RadarMode;
